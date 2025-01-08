@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.agendaonline" />
+                  <option name="mobileSdkAppId" value="1:625657116156:android:1f3d111e924388d38fae79" />
+                  <option name="projectId" value="agendaonline-f828a" />
+                  <option name="projectNumber" value="625657116156" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

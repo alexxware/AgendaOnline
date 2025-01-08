@@ -5,4 +5,8 @@
     <!-- MAIN ACTIVITY -->
     <string name="txtbtnIngresar">Ingresar</string>
     <string name="txtbtnRegistro">Registrarse</string>
+    <!-- LOGIN SCREEN -->
+    <string name="txtLoginTitle">Inicio de Sesión</string>
+    <string name="txtCorreo">Correo Electronico</string>
+    <string name="txtPassword">Contraseña</string>
 </resources>
