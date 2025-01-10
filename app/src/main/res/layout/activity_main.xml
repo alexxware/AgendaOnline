@@ -27,11 +27,13 @@
                 app:tint="@color/moradoTertiary"
                 android:src="@drawable/baseline_note_alt_24"/>
             <Button
+                android:id="@+id/btnIngresar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/txtbtnIngresar"
                 android:fontFamily="@font/poppins_semibold"/>
             <Button
+                android:id="@+id/btnRegistrarse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/txtbtnRegistro"

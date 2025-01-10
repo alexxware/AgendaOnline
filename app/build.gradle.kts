@@ -50,4 +50,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     //dependencia del BoM para la seleccion de versiones automaticamente
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    //implementamos dependencia de firebase
+    implementation(libs.firebase.analytics.ktx)
 }
