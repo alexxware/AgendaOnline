@@ -9,4 +9,11 @@
     <string name="txtLoginTitle">Inicio de Sesión</string>
     <string name="txtCorreo">Correo Electronico</string>
     <string name="txtPassword">Contraseña</string>
+
+    <!-- REGISTRO SCREEN -->
+    <string name="txtCrearCuenta">Crear una cuenta</string>
+    <string name="txtNombres">Nombre</string>
+    <string name="txtConfirmarContra">Confirmar Contraseña</string>
+    <string name="Registrar">Registrar</string>
+    <string name="txtTengoCuenta">Tengo una cuenta</string>
 </resources>
