@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp">
             <EditText
-                android:id="@+id/textName"
+                android:id="@+id/txtNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/txtNombres"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp">
             <EditText
-                android:id="@+id/textCorreo"
+                android:id="@+id/txtCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/txtCorreo"
@@ -73,7 +73,7 @@
             app:hintEnabled="false"
             android:layout_marginTop="15dp">
             <EditText
-                android:id="@+id/txtConfirmarContraseña"
+                android:id="@+id/txtConfirmarPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/txtConfirmarContra"
@@ -84,12 +84,14 @@
                 android:padding="20dp"/>
         </com.google.android.material.textfield.TextInputLayout>
         <Button
+            android:id="@+id/btnRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/Registrar"
             android:fontFamily="@font/poppins_semibold"/>
         <TextView
+            android:id="@+id/btnTengoCuenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtTengoCuenta"
