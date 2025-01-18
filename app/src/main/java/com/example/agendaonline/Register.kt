@@ -62,11 +62,11 @@ class Register : AppCompatActivity() {
         //lisener para el boton de registrar
         btnRegistrar.setOnClickListener {
             val validar = validarDatos()
-            if (validar) CrearCuenta(auth, correo = txtCorreo.text.toString(), password = txtPassword.text.toString())
+            if (validar) CrearCuenta(correo = txtCorreo.text.toString(), password = txtPassword.text.toString())
         }
 
     }
-    private fun CrearCuenta(firebaseAuth: FirebaseAuth, correo:String, password:String) {
+    private fun CrearCuenta(correo:String, password:String) {
         //mostramos el dialogo de progreso
         val progressDialog = AlertDialog.Builder(this)
             .setView(R.layout.progress_dialog)
@@ -74,7 +74,7 @@ class Register : AppCompatActivity() {
             .create()
         progressDialog.show()
 
-        firebaseAuth.signInWithEmailAndPassword(correo, password)
+        auth.createUserWithEmailAndPassword(correo, password)
             .addOnSuccessListener {
                 guardarInformacion(progressDialog)
             }
