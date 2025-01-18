@@ -16,4 +16,7 @@
     <string name="txtConfirmarContra">Confirmar Contraseña</string>
     <string name="Registrar">Registrar</string>
     <string name="txtTengoCuenta">Tengo una cuenta</string>
+
+    <!-- MENU PRINCIPAL SCREEN -->
+    <string name="txtCerrarSesion">Cerrar Sesión</string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class PantallaCarga : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +21,16 @@ class PantallaCarga : AppCompatActivity() {
             insets
         }
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            //validamos si hay un usuario con sesion activa
+            val auth = FirebaseAuth.getInstance()
+            if (auth.currentUser != null) {
+                startActivity(Intent(this, MenuPrincipal::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+
         }, 3000)
     }
 }
