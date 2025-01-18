@@ -53,4 +53,5 @@ dependencies {
     //implementamos dependencia de firebase
     implementation(libs.firebase.analytics.ktx)
     implementation(libs.google.firebase.auth)
+    implementation(libs.google.firebase.database.ktx)
 }

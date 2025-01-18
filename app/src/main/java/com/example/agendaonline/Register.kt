@@ -2,6 +2,7 @@ package com.example.agendaonline
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class Register : AppCompatActivity() {
     //variables para los elementos de la vista
@@ -55,21 +58,98 @@ class Register : AppCompatActivity() {
         }
         //inicializamos la autenticacion
         auth = FirebaseAuth.getInstance()
+
+        //lisener para el boton de registrar
+        btnRegistrar.setOnClickListener {
+            val validar = validarDatos()
+            if (validar) CrearCuenta(auth, correo = txtCorreo.text.toString(), password = txtPassword.text.toString())
+        }
+
+    }
+    private fun CrearCuenta(firebaseAuth: FirebaseAuth, correo:String, password:String) {
+        //mostramos el dialogo de progreso
         val progressDialog = AlertDialog.Builder(this)
             .setView(R.layout.progress_dialog)
             .setCancelable(false)
             .create()
+        progressDialog.show()
 
+        firebaseAuth.signInWithEmailAndPassword(correo, password)
+            .addOnSuccessListener {
+                guardarInformacion(progressDialog)
+            }
+            .addOnFailureListener { e ->
+                progressDialog.dismiss()
+                Toast.makeText(this, "Error registrar la cuenta: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
-    private fun ValidarDatos() {
+    private fun validarDatos(): Boolean {
         if (TextUtils.isEmpty(txtNombre.text.toString())){
             Toast.makeText(this, "Ingrese su nombre", Toast.LENGTH_SHORT).show()
+            return false
         }
         if (TextUtils.isEmpty(txtCorreo.text.toString())){
             Toast.makeText(this, "Ingrese su correo", Toast.LENGTH_SHORT).show()
+            return false
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(txtCorreo.text.toString()).matches()){
             Toast.makeText(this, "Correo no válido", Toast.LENGTH_SHORT).show()
+            return false
         }
+        if (TextUtils.isEmpty(txtPassword.text.toString())) {
+            Toast.makeText(
+                this,
+                "Ingrese una contraseña",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (TextUtils.isEmpty(txtConfirmPassword.text.toString())) {
+            Toast.makeText(
+                this,
+                "Por favor confirme su contraseña",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (txtPassword.text.toString() != txtConfirmPassword.text.toString()) {
+             Toast.makeText(
+                 this,
+                 "Las contraseñas no coinciden",
+                 Toast.LENGTH_SHORT
+             ).show()
+             return false
+        }
+        if (txtPassword.text.toString().length < 6) {
+            Toast.makeText(
+                this,
+                "La contraseña debe tener al menos 6 caracteres",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        return true //retorna en caso de exito
+    }
+    private fun guardarInformacion(progressDialog: AlertDialog) {
+
+        val uid: String = auth.uid.toString()
+        val datos = hashMapOf<String, String>(
+            "uid" to uid.toString(),
+            "nombre" to txtNombre.text.toString(),
+            "correo" to txtCorreo.text.toString()
+        )
+
+        val df: DatabaseReference = FirebaseDatabase.getInstance().getReference("Usuarios")
+        df.child(uid).setValue(datos)
+            .addOnSuccessListener {
+                progressDialog.dismiss()
+                Toast.makeText(this, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MenuPrincipal::class.java))//redireccionamos al menu principal
+                finish()
+            }
+            .addOnFailureListener { e ->
+                progressDialog.dismiss()
+                Toast.makeText(this, "Error al intentar guardar la cuenta: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 }
