@@ -30,7 +30,6 @@
             android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/txtCorreo"
             android:inputType="text"
             android:layout_marginBottom="16dp"
             android:padding="12dp"
@@ -43,13 +42,13 @@
             android:textSize="16sp"
             android:fontFamily="@font/poppins_semibold"/>
         <EditText
+            android:id="@+id/userPasswordEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/edit_text"
             android:inputType="textPassword"
             android:layout_marginBottom="16dp"
-            android:padding="12dp"
-            android:hint="@string/txtPassword"/>
+            android:padding="12dp"/>
 
     </LinearLayout>
 </RelativeLayout>
