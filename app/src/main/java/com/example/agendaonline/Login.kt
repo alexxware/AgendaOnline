@@ -1,7 +1,10 @@
 package com.example.agendaonline
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +13,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 
 class Login : AppCompatActivity() {
-    lateinit var inputEmail: EditText
-    lateinit var inputPassword: EditText
+    private lateinit var inputEmail: EditText
+    private lateinit var inputPassword: EditText
+    private lateinit var btnIniciarSesion: Button
+    private lateinit var btnRegistrarseScreen: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,18 +29,23 @@ class Login : AppCompatActivity() {
         }
         inputEmail = findViewById(R.id.usernameEditText)
         inputPassword = findViewById(R.id.userPasswordEt)
+        btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
+        btnRegistrarseScreen = findViewById(R.id.tvRegistrarseScreen)
 
-        val validado = ValidarDatos()
-        if (validado) {
-            IniciarSesion(
-                correo = inputEmail.text.toString(),
-                password = inputPassword.text.toString()
-            )
+        btnRegistrarseScreen.setOnClickListener {
+            startActivity(Intent(this, Register::class.java))
         }
-
+        btnIniciarSesion.setOnClickListener {
+            if (validarDatos()) {
+                iniciarSesion(
+                    correo = inputEmail.text.toString(),
+                    password = inputPassword.text.toString()
+                )
+            }
+        }
     }
 
-    private fun ValidarDatos(): Boolean {
+    private fun validarDatos(): Boolean {
         if (inputEmail.text.toString().isEmpty()) {
             Toast.makeText(this, "Ingrese su correo", Toast.LENGTH_SHORT).show()
             return false
@@ -47,13 +58,14 @@ class Login : AppCompatActivity() {
         return true
     }
 
-    private fun IniciarSesion(correo: String, password: String) {
+    private fun iniciarSesion(correo: String, password: String) {
         //iniciamos la instancia para firebase
         val auth = FirebaseAuth.getInstance()
 
         auth.signInWithEmailAndPassword(correo, password)
             .addOnSuccessListener {
-                Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MenuPrincipal::class.java))
+                finish()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()

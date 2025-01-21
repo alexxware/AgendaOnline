@@ -41,14 +41,39 @@
             android:text="@string/txtPassword"
             android:textSize="16sp"
             android:fontFamily="@font/poppins_semibold"/>
-        <EditText
-            android:id="@+id/userPasswordEt"
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:inputType="textPassword"
-            android:layout_marginBottom="16dp"
-            android:padding="12dp"/>
+            app:passwordToggleEnabled="true"
+            app:hintEnabled="false"
+            android:layout_marginTop="15dp">
+            <EditText
+                android:id="@+id/userPasswordEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:inputType="textPassword"
+                android:layout_marginBottom="16dp"
+                android:padding="12dp"/>
 
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnIniciarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnIniciarSesion"
+            android:fontFamily="@font/poppins_semibold"/>
+
+        <TextView
+            android:id="@+id/tvRegistrarseScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnCrearCuenta"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:layout_marginVertical="10dp"/>
     </LinearLayout>
 </RelativeLayout>
