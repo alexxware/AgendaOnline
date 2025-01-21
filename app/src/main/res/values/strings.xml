@@ -7,6 +7,8 @@
     <string name="txtbtnRegistro">Registrarse</string>
     <!-- LOGIN SCREEN -->
     <string name="txtLoginTitle">Inicio de Sesión</string>
+    <string name="btnIniciarSesion">Iniciar Sesión</string>
+    <string name="btnCrearCuenta">¿No tienes cuenta? Registrate.</string>
     <string name="txtCorreo">Correo Electronico</string>
     <string name="txtPassword">Contraseña</string>
 
