@@ -21,4 +21,6 @@
 
     <!-- MENU PRINCIPAL SCREEN -->
     <string name="txtCerrarSesion">Cerrar Sesión</string>
+    <string name="nombreUsuario">Nombre Usuario</string>
+    <string name="direccionCorreo">ejemplo@gmail.com</string>
 </resources>
