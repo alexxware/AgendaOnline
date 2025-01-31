@@ -23,4 +23,16 @@
     <string name="txtCerrarSesion">Cerrar Sesión</string>
     <string name="nombreUsuario">Nombre Usuario</string>
     <string name="direccionCorreo">ejemplo@gmail.com</string>
+    <string name="btnAgregarNota">Agregar Nota</string>
+
+    <!-- AGREGAR NOTA SCREEN -->
+    <string name="uiUsuario">Ui Usuario</string>
+    <string name="correoUsuario">Correo de Usuario</string>
+    <string name="currentFecha">Fecha Actual</string>
+    <string name="titulo">Título</string>
+    <string name="descripcion">Descripción</string>
+    <string name="btnCalendario">Fecha</string>
+    <string name="initFecha">00/00/0000</string>
+    <string name="noFinalizado">No Finalizado</string>
+    <string name="btnGuardar">Guardar</string>
 </resources>
